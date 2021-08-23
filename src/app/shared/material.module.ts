@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [],
@@ -23,6 +24,7 @@ import { MatTableModule } from '@angular/material/table';
     MatProgressSpinnerModule,
     MatTabsModule,
     MatTableModule,
+    MatPaginatorModule,
   ],
 })
 export class MaterialModule {}
