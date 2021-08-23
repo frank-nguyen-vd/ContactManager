@@ -29,6 +29,13 @@ export class NotesComponent implements OnInit, AfterViewInit {
     }
   }
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource<Note>(this.notes);
+    if (this.notes) {
+      this.dataSource = new MatTableDataSource<Note>(this.notes);
+    }
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
