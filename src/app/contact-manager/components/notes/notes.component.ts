@@ -8,6 +8,7 @@ import {
 import { Note } from '../../models/note';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-notes',
@@ -17,15 +18,21 @@ import { MatPaginator } from '@angular/material/paginator';
 export class NotesComponent implements OnInit, AfterViewInit {
   @Input() notes: Note[] | undefined;
 
+  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
+  @ViewChild(MatSort) sort: MatSort | undefined;
+
   displayedColumns: string[] = ['position', 'title', 'date'];
   dataSource: MatTableDataSource<Note> = new MatTableDataSource<Note>([]);
 
   constructor() {}
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   ngAfterViewInit() {
     if (this.paginator) {
       this.dataSource.paginator = this.paginator;
+    }
+
+    if (this.sort) {
+      this.dataSource.sort = this.sort;
     }
   }
   ngOnInit(): void {
